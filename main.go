@@ -1,0 +1,62 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"slices"
+	"main/day1"
+)
+
+type Task interface {
+	Solve(input []string) (any, any)
+	Name() string
+}
+
+// registry holds all registered tasks.
+var registry = make(map[string]Task)
+
+func register() {
+	tasks := []Task{
+		&day1.Task{},
+	}
+	for _, task := range tasks {
+		name := task.Name()
+		registry[name] = task
+	}
+}
+
+func main() {
+	register()
+	if len(os.Args) < 2 {
+		fmt.Println("Usage: run <task> [args...]")
+		fmt.Println("Available tasks:", tasks())
+		return
+	}
+
+	taskName := os.Args[1]
+	filepath := os.Args[2]
+
+	file, err := os.Open(filepath)
+	if err != nil {
+		fmt.Printf("Failed to open a file: %s", err)
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	input := make([]string, 0)
+
+	for scanner.Scan() {
+		input = append(input, scanner.Text())
+	}
+	fmt.Println(registry[taskName].Solve(input))
+}
+
+func tasks() []string {
+	keys := make([]string, 0)
+	for k := range registry {
+		keys = append(keys, k)
+	}
+	slices.Sort(keys)
+	return keys
+}
