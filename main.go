@@ -6,6 +6,7 @@ import (
 	"os"
 	"slices"
 	"main/day1"
+	"main/day2"
 )
 
 type Task interface {
@@ -19,6 +20,7 @@ var registry = make(map[string]Task)
 func register() {
 	tasks := []Task{
 		&day1.Task{},
+		&day2.Task{},
 	}
 	for _, task := range tasks {
 		name := task.Name()
