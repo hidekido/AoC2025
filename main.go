@@ -7,6 +7,7 @@ import (
 	"slices"
 	"main/day1"
 	"main/day2"
+	"main/day3"
 )
 
 type Task interface {
@@ -21,6 +22,7 @@ func register() {
 	tasks := []Task{
 		&day1.Task{},
 		&day2.Task{},
+		&day3.Task{},
 	}
 	for _, task := range tasks {
 		name := task.Name()
