@@ -3,11 +3,12 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"os"
-	"slices"
 	"main/day1"
 	"main/day2"
 	"main/day3"
+	"main/day4"
+	"os"
+	"slices"
 )
 
 type Task interface {
@@ -23,6 +24,7 @@ func register() {
 		&day1.Task{},
 		&day2.Task{},
 		&day3.Task{},
+		&day4.Task{},
 	}
 	for _, task := range tasks {
 		name := task.Name()
