@@ -7,6 +7,7 @@ import (
 	"main/day2"
 	"main/day3"
 	"main/day4"
+	"main/day5"
 	"os"
 	"slices"
 )
@@ -25,6 +26,7 @@ func register() {
 		&day2.Task{},
 		&day3.Task{},
 		&day4.Task{},
+		&day5.Task{},
 	}
 	for _, task := range tasks {
 		name := task.Name()
