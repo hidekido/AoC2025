@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"main/day1"
+	"main/day11"
 	"main/day2"
 	"main/day3"
 	"main/day4"
@@ -35,6 +36,7 @@ func register() {
 		&day7.Task{},
 		&day8.Task{},
 		&day9.Task{},
+		&day11.Task{},
 	}
 	for _, task := range tasks {
 		name := task.Name()
