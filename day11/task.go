@@ -69,7 +69,7 @@ func dfs2(cur, target string, graph map[string]map[string]struct{}, memo map[str
 	res := 0
 	for next := range graph[cur] {
 		res += dfs2(next, target, graph, memo)
-	}
+	} 
 	memo[cur] = res
 	return res
 }
